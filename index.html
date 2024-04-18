@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkiddyScripts LLC</title>
+    <style>
+      .fa-chevron-down {
+        animation: down-bounce 2s infinite;
+      }
+      @keyframes down-bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+      .top-left-corner-gradient {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 100px;
+        background: linear-gradient(90deg, purple, blue);
+        filter: blur(180px);
+        z-index: -1;
+      }
+
+      /* custom scrollbar */
+
+      ::-webkit-scrollbar {
+        background-color: transparent;
+        color: transparent;
+        width: 0px;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: black; /* Changed background to black */
+        color: white; /* Changed text color to white */
+      }
+
+      .navbar {
+        color: #fff; /* Changed text color to white */
+        background-color: transparent; /* Transparent background for the navbar */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border for the navbar */
+      }
+
+      .navbar-light .navbar-nav .nav-link text-white {
+        color: white; /* Ensure nav links are visible against the black background */
+      }
+
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      .navbar-toggler:focus {
+        outline: none !important;
+      }
+
+      .navbar-toggler span {
+        outline: none !important;
+      }
+
+      .navbar-light .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255,255,255,0.3)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .btn-primary {
+        background-color: black;
+        border-color: #333;
+      }
+
+      .btn-primary:hover {
+        background-color: #333;
+        border-color: #333;
+      }
+
+      .btn-primary:focus {
+        background-color: #222 !important;
+        border-color: #222 !important;
+      }
+
+      .btn-primary:active {
+        background-color: #333;
+        border-color: #333;
+      }
+
+      .btn-primary:disabled {
+        background-color: #333;
+        border-color: #333;
+      }
+
+      .btn-outline-primary {
+        color: black;
+        border-color: white;
+        background-color: white;
+      }
+
+      .btn-outline-primary:focus {
+        color: white !important;
+        background-color: #222 !important;
+        border-color: #222 !important;
+      }
+
+      .btn-outline-primary:hover {
+        color: white;
+        background-color: #333;
+        border-color: #333;
+      }
+
+      .card {
+        background-color: #000;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* for the list-group items */
+      .list-group-item {
+        background-color: #000;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* input field */
+      .form-control {
+        background-color: #000;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-control::placeholder {
+        color: white;
+      }
+
+      .form-control:focus {
+        background-color: #000;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        outline: none;
+      }
+
+      .gradient-text {
+        background: linear-gradient(45deg, purple, blue);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient 2s ease infinite;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+
+    <div class="top-left-corner-gradient"></div>
+
+    <nav
+      id="navbar"
+      class="navbar text-light text-white navbar-expand-lg px-4 sticky-top"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">SkiddyScripts LLC</a>
+        <button
+          class="navbar-toggler bg-transparent border-0 outline-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon outline-none"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white active" aria-current="page" href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#contact">Key</a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link text-white d-none d-lg-block">|</span>
+              <hr class="nav-separator d-lg-none" />
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                href="https://skiddyscripts.xyz/callback/redirect?redirect=discord"
+              >
+                <i class="fab fa-discord me-2"></i>
+                Join Discord</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" style="padding-top: 100px">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h1 class="display-4 fw-bold">SkiddyScripts LLC</h1>
+            <p class="lead">
+              SkiddyScripts LLC is a software development company that's managed
+              and maintained by two individuals who have a passion for coding
+              and a deep, well understanding of the Roblox platform and how we
+              can manupulate it to our advantage. We strive to create
+              high-quality and efficient scripts that enhance the gaming
+              experience for our users.
+            </p>
+            <a href="#contact" class="btn btn-primary btn-lg">Get Started</a>
+          </div>
+          <i
+            class="fas fa-chevron-down fa-1x text-primary text-center mt-5"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center" style="padding-top: 300px">
+            <h2 class="display-4 fw-bold">Services</h2>
+            <p class="lead">
+              We offer two types of services that you can use to Make your
+              roblox experience even better and have an edge over your opponents
+              in your game.
+            </p>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-lg-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title">Catalyst</h2>
+                  <p class="card-text">
+                    Catalyst is a script-hub, designed to give you access to a
+                    wide range of games and scripts that you can use to enhance
+                    your Roblox experience. It is designed to be fast, secure,
+                    and customizable and it's the bigger brother of IceWare. The
+                    only disadvantage is that it's paid, but that comes with a
+                    lot of benefits, making buying it worth it.
+                  </p>
+                  <a href="#" class="btn btn-primary w-100">Purchase</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title">IceWare</h2>
+                  <p class="card-text">
+                    IceWare is a smaller, free version of Catalyst, designed to
+                    also give you the basic necessities you need to enhance your
+                    Roblox experience. It is similar to Catalyst, but it's
+                    limited in features and game and it's locked behind a
+                    keysystem. IceWare is a good way to test out our products
+                    before you decide to purchase Catalyst, or IceWare Keyless.
+                  </p>
+                  <a href="#" class="btn btn-primary w-100">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 class="display-4 fw-bold">Features</h2>
+            <p class="lead">
+              All of our products come with multiple features to enhance and
+              give you the edge you need in your game. Along with a huge library
+              of features, here are some of the main features that we offer.
+            </p>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-tools border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Speed</h5>
+                  <p class="card-text text-center">
+                    Our products are designed to be fast and efficient, so you
+                    can get the most out of the edge you need in your game,
+                    without any lag or delay.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-shield-alt border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Security</h5>
+                  <p class="card-text text-center">
+                    Our products are designed to be secure and safe, so you can
+                    use them without any worries about your account or personal
+                    information being compromised, leaked or stolen.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-cogs border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Customization</h5>
+                  <p class="card-text text-center">
+                    Our products have been perfected to be customizable, so you
+                    can modify any aspect of the product to your liking, and
+                    make it your own.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-sync border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Updates</h5>
+                  <p class="card-text text-center">
+                    We update all of our products really frequently along with
+                    some of the quickest unpatching times in the market, so you
+                    can get the latest features and improvements as soon as
+                    possible.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-headset border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Support</h5>
+                  <p class="card-text text-center">
+                    We offer 24/7 support to all of our users, so you can get
+                    help whenever you need it, and get back to giving yourself
+                    what you need to win.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="text-center">
+                    <i class="fas fa-user-shield border p-3 rounded-circle"></i>
+                  </div>
+                  <h5 class="card-title text-center mt-3">Privacy</h5>
+                  <p class="card-text text-center">
+                    We take your privacy very seriously, and we will never share
+                    or sell your personal information to any third party, so you
+                    can use our products with peace of mind.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 class="display-4 fw-bold">Pricing</h2>
+            <p class="lead">
+              Our pricing is very simple, competitive and affordable. We offer
+              three different plans which are very flexible, so you can choose
+              the one that best suits your needs and budget.
+              <strong
+                >Before you make a purchase, please make sure to read our terms
+                of service and privacy policy to ensure you understand our
+                policies and procedures.
+              </strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="row mt-5 justify-content-center">
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Free</h2>
+                <p class="card-text">Free forever</p>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    Access to IceWare (Key system)
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-times me-2"></i>
+                    No Access to Catalyst
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-clock me-2"></i>
+                    Regular Updates
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-clock me-2"></i>
+                    Limited Support (non-priority)
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary w-100 mt-4 disabled"
+                  >Unavailable</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card border-primary">
+              <div class="card-body">
+                <div class="badge bg-primary text-white">Most Popular</div>
+                <h2 class="card-title">Premium</h2>
+                <p class="card-text">$4.99 lifetime</p>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Full Access to Catalyst
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Access to IceWare Keyless
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Priority Support
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fab fa-discord me-2"></i>
+                    Discord server benefits
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    Beta Updates
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-eye-slash me-2"></i>
+                    Access to sneakpeaks, early devlogs, and more
+                  </li>
+                </ul>
+                <a href="#" class="btn btn-primary w-100 mt-4">Purchase</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Basic</h2>
+                <p class="card-text">$2.99 lifetime</p>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Access to Catalyst
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Access to IceWare (Key system)
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    24/7 Support (priority)
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-check me-2"></i>
+                    Regular Updates
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fab fa-discord me-2"></i>
+                    Discord server benefits
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    Limited access to sneakpeaks, early devlogs, and more
+                  </li>
+                </ul>
+                <a href="#" class="btn btn-primary w-100 mt-4">Purchase</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 class="display-4 fw-bold">Key</h2>
+            <p class="lead">
+              Looking for the key system to access IceWare? You can get it in
+              the script, if you can't find it, please input your Hardware ID
+              below and we will help you get started.
+            </p>
+            <input
+              type="text"
+              class="form-control mb-3 text-white placeholder-white"
+              id="floatingInput"
+              placeholder="Hardware ID"
+            />
+            <button class="btn btn-primary btn-md w-100">Get Key</button>
+            <p class="mt-3">
+              By clicking the button, you consent to our servers allowing to
+              process your data like your HWID securely in our systems for a
+              limited time. We will not
+              <span class="text-danger">store, share or sell</span> your data
+              (incl. HWID) to any third party.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="creators">
+      <div class="container align-items-center">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 class="display-4 fw-bold">Creators</h2>
+            <p class="lead">
+              We are 2 individuals who have a passion for coding and a deep,
+              well understanding of the Roblox platform and how we can
+              manupulate it to our advantage. We strive to create high-quality
+              and efficient scripts that enhance the gaming experience for our
+              users.
+            </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <img
+                  src="https://cdn.discordapp.com/attachments/1168599100401405952/1212749690274054205/IMG_7136.jpg?ex=65f2f829&is=65e08329&hm=c7d166ad3cbe41fdc7cc22f62b7d4105b1344d443ec2132267c3a5fec13637a3&"
+                  alt="Creator"
+                  class="img-fluid rounded-circle mx-auto d-block"
+                  style="width: 80px; height: 80px"
+                />
+                <h5 class="card-title text-center mt-3">Spoody (@a78g)</h5>
+                <p class="card-text text-center">
+                  Hello, I'm Spoody, co-founder of SkiddyScripts. I specialize
+                  mostly in the web and backend development of our projects. I'm
+                  also specialized in the client-side development of mainly
+                  Catalyst and IceWare as more of a less considered role. I'm
+                  also the main developer of the website and the backend of our
+                  services.
+                </p>
+
+                <div class="d-flex justify-content-center">
+                  <a href="https://kakka.fi/" class="me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="https://github.com/spooderman11" class="me-2"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                  <a
+                    href="https://discord.com/users/818786047718457346"
+                    class="me-2"
+                    ><i class="fab fa-discord"></i
+                  ></a>
+                  <a href="https://www.youtube.com/@spoodwashere" class="me-2"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                  <a href="https://t.me/spoofrman" class="me-2"
+                    ><i class="fab fa-telegram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <img
+                  src="https://cdn.discordapp.com/attachments/1168594965060915281/1212786124313858078/IMG_2617.png?ex=65f31a18&is=65e0a518&hm=46f77865120165aad3caebd53dc3fad2f4143904fd16882645303a29a009f969&"
+                  alt="Creator"
+                  class="img-fluid rounded-circle mx-auto d-block"
+                  style="width: 80px; height: 80px"
+                />
+                <h5 class="card-title text-center mt-3">Capi (@c.pi)</h5>
+                <p class="card-text text-center">
+                  Yo, I'm capi, the founder of SkiddyScripts along with spoody.
+                  I handle the script development aspect of this project and
+                  manage the advertisement side as well. With a strong passion
+                  for coding and a deep understanding of the Roblox platform, I
+                  strive to create high-quality and efficient scripts that
+                  enhance the gaming experience for our users.
+                </p>
+
+                <div class="d-flex justify-content-center">
+                  <a href="https://github.com/nxtcapi" class="me-2"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                  <a
+                    href="https://discord.com/users/741653142411804733"
+                    class="me-2"
+                    ><i class="fab fa-discord"></i
+                  ></a>
+                  <a href="https://t.me/wtfcapi" class="me-2"
+                    ><i class="fab fa-telegram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <img
+                  src="https://cdn.discordapp.com/attachments/1172596752663183381/1213129709349769318/Icons-Land-Multiple-Smiley-Cat-Dizzy.256.png?ex=65f45a15&is=65e1e515&hm=9cf8f7963503a31914853c449e92dc7f29aac532b88edec7108eae429248a564&"
+                  alt="Creator"
+                  class="img-fluid rounded-circle mx-auto d-block"
+                  style="width: 80px; height: 80px"
+                />
+                <h5 class="card-title text-center mt-3">Targeteater (@91ba)</h5>
+                <p class="card-text text-center">
+                  Hi, I'm Targeteater, the main developer of IceWare. I'm a
+                  developer who's forced to work on IceWare, but I'm also a
+                  freelance developer who's working on other projects as well. I
+                  LOVE ICEWARE AND I'M FORCED TO WORK ON IT, I'M NOT A SKID.
+                </p>
+
+                <div class="d-flex justify-content-center">
+                  <a href="https://github.com/Flroa" class="me-2"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                  <a
+                    href="https://discord.com/users/1014521762647646219"
+                    class="me-2"
+                    ><i class="fab fa-discord"></i
+                  ></a>
+                  <a
+                    href="https://www.roblox.com/users/3143604534/profile"
+                    class="me-2"
+                    ><i class="fas fa-gamepad"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats">
+      <div class="container align-items-center">
+        <div class="row mt-5 justify-content-center">
+          <div class="col-lg-4 mb-4">
+            <div class="card-body text-center">
+              <h2 class="card-title">450K<span style="color: blue">+</span></h2>
+              <p class="card-text">Script Executions</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card-body text-center">
+              <h2 class="card-title">
+                10000<span style="color: blue">+</span>
+              </h2>
+              <p class="card-text">Total lines of Code</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card-body text-center">
+              <h2 class="card-title">500<span style="color: blue">+</span></h2>
+              <p class="card-text">Hours of Work</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div
+        class="container w-100"
+        style="border-top: 1px solid rgba(255, 255, 255, 0.1)"
+      >
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-6">
+            <p class="text-center">
+              &copy; 2024 SkiddyScripts LLC. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .scrolled {
+        background-color: transparent !important;
+        backdrop-filter: blur(10px);
+        padding-top: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+
+    <script>
+      const downChevron = document.querySelector(".fa-chevron-down");
+      downChevron.addEventListener("click", () => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      });
+
+      const purchaseButtons = document.querySelectorAll(".card .btn-primary");
+      purchaseButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          window.location.href =
+            "https://skiddyscripts.xyz/callback?redirect=discord";
+        });
+      });
+
+      const getKeyButton = document.querySelector("#contact .btn-primary");
+      getKeyButton.addEventListener("click", () => {
+        const hwid = document.querySelector("#floatingInput").value;
+        window.location.href = `https://auth.skiddyscripts.xyz/keysystem/start?hwid=${hwid}`;
+      });
+
+      window.onscroll = function () {
+        var navbar = document.getElementById("navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      };
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
